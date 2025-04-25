@@ -1,0 +1,113 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div style="max-width: 700px; margin: auto;">
+      <form style="font-size: 40px; font-family: Inter,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji">
+        <label id="question"></label>
+        <input id="answer_box" style="font-size: 40px; font-family: Inter,ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji" type="text" oninput="CheckAnswer()">
+      </form>
+    <div>
+
+    <script>
+      var debug = false;
+      var currentProblemIdx = 0;
+      const problems = [
+        {question: "7 x 24 = ", answer: "168"},
+        {question: "8 x 24 = ", answer: "192"},
+        {question: "9 x 24 = ", answer: "216"},
+        {question: "2 x 5 = ", answer: "10"},
+        {question: "2 x 6 = ", answer: "12"},
+        {question: "2 x 7 = ", answer: "14"},
+        {question: "3 x 4 = ", answer: "12"},
+        {question: "3 x 5 = ", answer: "15"},
+        {question: "3 x 6 = ", answer: "18"},
+        {question: "4 x 4 = ", answer: "16"},
+        {question: "4 x 5 = ", answer: "20"},
+        
+        
+        
+        {question: "2 x 12 = ", answer: "24"},
+        {question: "2 x 13 = ", answer: "26"},
+        {question: "2 x 14 = ", answer: "28"},
+        {question: "3 x 10 = ", answer: "30"},
+        {question: "3 x 11 = ", answer: "33"},
+        {question: "3 x 12 = ", answer: "36"},
+        {question: "4 x 8 = ", answer: "32"},
+        {question: "4 x 9 = ", answer: "36"},
+        {question: "4 x 10 = ", answer: "40"},
+        {question: "5 x 7 = ", answer: "35"},
+        {question: "5 x 8 = ", answer: "40"},
+        {question: "5 x 9 = ", answer: "45"},
+        {question: "6 x 6 = ", answer: "36"},
+        {question: "6 x 7 = ", answer: "42"},
+        {question: "6 x 8 = ", answer: "48"},
+        {question: "7 x 7 = ", answer: "49"},
+        
+        
+        
+        {question: "2 x 18 = ", answer: "36"},
+        {question: "2 x 19 = ", answer: "38"},
+        {question: "2 x 20 = ", answer: "40"},
+        {question: "3 x 16 = ", answer: "48"},
+        {question: "3 x 17 = ", answer: "51"},
+        {question: "4 x 14 = ", answer: "56"},
+        {question: "4 x 15 = ", answer: "60"},
+        {question: "5 x 12 = ", answer: "60"},
+        {question: "5 x 13 = ", answer: "65"},
+        {question: "5 x 14 = ", answer: "70"},
+        {question: "6 x 11 = ", answer: "66"},
+        {question: "6 x 12 = ", answer: "72"},
+        {question: "6 x 13 = ", answer: "78"},
+        {question: "7 x 10 = ", answer: "70"},
+        {question: "7 x 11 = ", answer: "77"},
+        {question: "8 x 9 = ", answer: "72"},
+        {question: "8 x 10 = ", answer: "80"},
+        {question: "9 x 9 = ", answer: "81"},
+      ];
+      const numProblems = problems.length;
+
+      function SetProblem(problemIdx) {
+        questionLabel = document.getElementById("question");
+        questionLabel.innerText = problems[problemIdx].question;
+        answerBox = document.getElementById("answer_box");
+        answerBox.value = "";
+      }
+
+      function NextProblem() {
+        currentProblemIdx++;
+        if (debug) {
+          alert('currentProblemIdx = ' + currentProblemIdx);
+        }
+        if (currentProblemIdx === numProblems) {
+          alert('Congratulations, you finished!');
+          return;
+        }
+        SetProblem(currentProblemIdx);
+      }
+
+      function CheckAnswer() {
+        if (debug) {
+          alert('call check answer');
+        }
+        answerBox = document.getElementById("answer_box");
+        answer = answerBox.value;
+        if (debug) {
+          alert('answer = ' + answer);
+        }
+        if (answer === problems[currentProblemIdx].answer) {
+          if (debug) {
+            alert('Correct answer!');
+          }
+          NextProblem();
+        } else {
+          if (debug) {
+            alert('Incorrect answer!');
+          }
+        }
+      }
+
+      SetProblem(0);
+    </script>
+  </body>
+</html>
